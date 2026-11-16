@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-type="software" data-radius="sharp" data-ground="sky" data-buttons="solid" data-motion>
+<html lang="en" data-type="software" data-radius="soft" data-ground="sage" data-buttons="solid" data-motion>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -11,13 +11,13 @@
 <meta property="og:image" content="share.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<meta name="theme-color" content="#0a0d14">
+<meta name="theme-color" content="#f3eee3">
 <!-- <link rel="canonical" href="https://[the client's domain]/"> -->
 <meta name="site-kind" content="software">
 <meta name="page-type" content="software">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400..700&family=JetBrains+Mono:wght@400..500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,400..700&family=Figtree:wght@400..600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/system.css">
 <link rel="stylesheet" href="assets/ui/cards.css">
 <link rel="stylesheet" href="assets/motion/motion.css">
@@ -26,17 +26,17 @@
 <link rel="stylesheet" href="assets/icons/icon.css">
 <style>
 :root {
-  --p-bg: #0a0d14; --p-surface: #131824; --p-ink: #e9edf3; --p-muted: #8891a1;
-  --p-accent: #5ab9fc; --p-accent-ink: #0a0d14; --p-action: #5ab9fc; --p-action-ink: #0a0d14;
-  --p-inv-bg: #e9edf3; --p-inv-surface: #d7dbe1; --p-inv-ink: #0a0d14; --p-inv-muted: #54575f;
-  --p-inv-accent: #0a0d14; --p-inv-accent-ink: #e9edf3; --p-inv-action: #0a0d14; --p-inv-action-ink: #e9edf3;
-  --font-display: "Schibsted Grotesk", system-ui, sans-serif;
-  --font-text: "Schibsted Grotesk", system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --p-bg: #f3eee3; --p-surface: #e9e2d3; --p-ink: #1e2a24; --p-muted: #5c655f;
+  --p-accent: #2f6b4f; --p-accent-ink: #f3eee3; --p-action: #2f6b4f; --p-action-ink: #f3eee3;
+  --p-inv-bg: #1e2a24; --p-inv-surface: #2b362f; --p-inv-ink: #f3eee3; --p-inv-muted: #a2a39a;
+  --p-inv-accent: #f3eee3; --p-inv-accent-ink: #1e2a24; --p-inv-action: #f3eee3; --p-inv-action-ink: #1e2a24;
+  --font-display: "Bricolage Grotesque", system-ui, sans-serif;
+  --font-text: "Figtree", system-ui, sans-serif;
+  --font-mono: "DM Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
   --display-weight: 400;
-  --display-tracking: -0.035em;
-  --display-tracking-xl: -0.042em;
-  --ly-scale: 0.98;
+  --display-tracking: -0.03em;
+  --display-tracking-xl: -0.04em;
+  --display-stretch: 96%;
 }
 </style>
 <link rel="stylesheet" href="assets/ui/base.css">
@@ -45,10 +45,6 @@
 <link rel="stylesheet" href="assets/diagrams/diagram.css">
 <script>document.documentElement.classList.add('m-enter');setTimeout(()=>document.documentElement.classList.add('m-enter-done'),700)</script>
 <script src="assets/backgrounds/backgrounds.js"></script>
-<script>document.documentElement.classList.add('mo-js');setTimeout(()=>document.documentElement.classList.add('mo-safe'),2500)</script>
-<link rel="modulepreload" href="assets/moments/moments.js">
-<link rel="modulepreload" href="assets/moments/lib.js">
-<link rel="modulepreload" href="assets/moments/line-carries-colour/moment.js">
 <style>
   /* the hero's window sits in the picture frame, cut by its right and bottom edges */
   .hero__media .stage { position: absolute; inset: 0; }
@@ -72,8 +68,8 @@
 <body>
 <!-- type: software
      deal: hero split (ui), nav nav-centre (nav-cards re-dealt: no photograph to show), close close-type, footer footer-dark, rhythm none, buttons tonal, mark initial, grounds none (data-ground sky on the panels)
-     palette blue-black-cornflower + Schibsted Grotesk / JetBrains Mono, radius sharp: a dark ground and one cornflower accent suit lending data read on screen
-     moments: line-carries-colour in #about -->
+     palette client-chosen oat and forest (#F3EEE3, #1E2A24, #2F6B4F) + Bricolage Grotesque / Figtree / DM Mono, radius soft: a warm light ground and one green accent, chosen to feel less like finance
+     moments: none (removed at the client's request) -->
 
 <header class="nav nav--centre">
   <div class="wrap nav__bar">
@@ -196,7 +192,7 @@
     </div>
   </section>
   <!-- the portrait: Eva's own photograph goes in this frame (about-portrait.jpg, 1:1) -->
-  <section class="section ground-inverse" id="about" data-moment="line-carries-colour" data-moment-opts='{"from": "base"}' aria-labelledby="about-h">
+  <section class="section ground-inverse" id="about" aria-labelledby="about-h">
     <div class="wrap grid grid--top">
       <div class="span-6">
         <div class="section-head">
