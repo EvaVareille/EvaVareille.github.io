@@ -48,35 +48,32 @@
 <script>document.documentElement.classList.add('mo-js');setTimeout(()=>document.documentElement.classList.add('mo-safe'),2500)</script>
 <link rel="modulepreload" href="assets/moments/moments.js">
 <link rel="modulepreload" href="assets/moments/lib.js">
-<link rel="modulepreload" href="assets/moments/letters-assemble/moment.js">
+<link rel="modulepreload" href="assets/moments/line-carries-colour/moment.js">
 <style>
   /* the hero's window sits in the picture frame, cut by its right and bottom edges */
   .hero__media .stage { position: absolute; inset: 0; }
   #pipeline .panel { --p-h: 540px; }
-  #method .panel { --p-h: 460px; }
-  #statement .panel { --p-h: 260px; }
   #stack .link { display: inline-block; margin-top: var(--s-5); }
-  #statement .mo-la__type { font-size: clamp(48px, 7.5vw, 104px); }
-  #statement .panel { margin-top: var(--s-7); }
   @media (min-width: 640px) and (max-width: 1023px) { #pipeline .panel { --p-h: 300px; } }
   @media (max-width: 639px) { #pipeline .panel { --p-h: 340px; } #pipeline .rows__name small { display: none; } }
+  .about__portrait { aspect-ratio: 1 / 1; display: grid; place-items: center; background: var(--surface); border-radius: var(--r-lg); }
+  .about__portrait span { font: var(--display-weight) clamp(120px, 18vw, 240px)/1 var(--font-display); letter-spacing: var(--display-tracking-xl); color: var(--muted); }
+  @media (min-width: 640px) and (max-width: 1023px) { .about__portrait { aspect-ratio: 2 / 1; } }
+  @media (max-width: 639px) { .about__portrait { aspect-ratio: 5 / 2; } #pipeline .panel { --p-h: 300px; } }
   .rows .rows__name small { display: block; font-weight: 400; color: var(--muted); font-size: var(--t-small); }
   #stack .panel { --p-h: 520px; }
-  #statement .panel { background: var(--surface); }
-  #statement .mo-la__sub { color: var(--ink); }
   @media (max-width: 1023px) { #stack .panel { --p-h: 360px; } }
   @media (max-width: 639px) { #stack .panel { --p-h: 460px; } }
   @media (max-width: 639px) { #stack .rows { display: none; } }
   @media (max-width: 359px) { .nav__logo { font-size: 15px; gap: 8px; } .nav__bar { gap: 8px; } }
-  @media (max-width: 1279px) { #method .panel { --p-h: 400px; } }
-  @media (max-width: 639px) { #method .panel { --p-h: 340px; } #statement .panel { --p-h: 360px; } }
+  @media (max-width: 639px) {  }
 </style>
 </head>
 <body>
 <!-- type: software
-     deal: hero split (ui), nav nav-centre (nav-cards re-dealt: no photograph to show), close close-type, footer footer-dark, rhythm dark-band (#method), buttons tonal, mark initial, grounds none (data-ground sky on the panels)
+     deal: hero split (ui), nav nav-centre (nav-cards re-dealt: no photograph to show), close close-type, footer footer-dark, rhythm none, buttons tonal, mark initial, grounds none (data-ground sky on the panels)
      palette blue-black-cornflower + Schibsted Grotesk / JetBrains Mono, radius sharp: a dark ground and one cornflower accent suit lending data read on screen
-     moments: letters-assemble in #statement -->
+     moments: line-carries-colour in #about -->
 
 <header class="nav nav--centre">
   <div class="wrap nav__bar">
@@ -84,8 +81,8 @@
     <a class="nav__logo" href="#top"><span class="mark mark--initial" aria-hidden="true">E</span>Eva Vareille</a>
     <nav class="nav__links" aria-label="Main">
       <div class="nav__item"><a class="nav__link" href="#pipeline">Pipeline</a></div>
-      <div class="nav__item"><a class="nav__link" href="#method">Method</a></div>
       <div class="nav__item"><a class="nav__link" href="#stack">Stack</a></div>
+      <div class="nav__item"><a class="nav__link" href="#about">About</a></div>
     </nav>
     <div class="nav__actions">
       <a class="btn btn--primary" href="https://github.com/EvaVareille/credit-risk-default-prediction">View on GitHub</a>
@@ -177,49 +174,6 @@
     </div>
   </section>
 
-  <section class="section ground-inverse" id="method" aria-labelledby="method-h">
-    <div class="wrap grid grid--top">
-      <div class="span-6">
-        <div class="section-head">
-          <h2 id="method-h">Credit risk rules that block leakage</h2>
-          <p>Only what a lender knows on the application date reaches the model. One list in the code decides what counts as a default: charged off and default are 1, fully paid is 0, and running loans are left out.</p>
-        </div>
-      </div>
-      <div class="span-6 start-7">
-        <div class="panel">
-          <div class="stage"><div class="at-rise fit" style="--fit-max:440px;--ax:max(24px, 50% - 220px);--ay:48px;--ay-sm:16px" data-ui-loop>
-            <div class="ui ui-panel ui-code" data-ui="code">
-              <div class="ui-code__tabs">
-                <span class="ui-code__tab is-on"><i class="ui-code__lang">PY</i>config.py</span>
-                <span class="ui-code__tab"><i class="ui-code__lang">PY</i>clean.py</span>
-                <span class="ui-spacer"></span>
-                <span class="ui-chip ui-chip--plain ui-code__chip" data-code-chip>2 notes</span>
-              </div>
-              <pre class="ui-code__pre"><code><span class="ui-code__ln" data-n="12">TARGET = <span class="n">"is_default"</span></span>
-<span class="ui-code__ln" data-n="13" data-note="Only fully matured loans.">MODEL_TERM_MONTHS = <span class="n">36</span></span>
-<span class="ui-code__ln" data-n="14" data-note="The same split on every run.">RANDOM_SEED = <span class="n">42</span></span>
-<span class="ui-code__ln is-mark" data-n="15">DEFAULT_STATUSES = <span class="f">frozenset</span>({</span>
-<span class="ui-code__ln" data-n="16">    <span class="n">"Charged Off"</span>,</span>
-<span class="ui-code__ln" data-n="17">    <span class="n">"Default"</span>,</span>
-<span class="ui-code__ln" data-n="18">})</span></code></pre>
-              <div class="ui-code__hint" data-code-hint><span class="ui-dot"></span><span data-code-text>One list decides what counts as a default.</span></div>
-            </div>
-          </div></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="statement" data-moment="letters-assemble" data-moment-opts='{"spread": 1}' aria-labelledby="statement-h">
-    <div class="wrap">
-      <h2 class="mo-la__type" id="statement-h">Test on the future</h2>
-      <p class="mo-la__sub">Train on 2013 and 2014, tune on early 2015 and score the second half of 2015 once, as banks do.</p>
-      <div class="panel">
-        <div class="dg" data-dg-still data-diagram><script type="application/json">{"layout":"free","alt":"Train on loans issued 2013 to 2014, tune on January to June 2015, test on July to December 2015.","nodes":[{"id":"train","label":"Train","icon":"ui:database","meta":"2013 to 2014","at":[0.17,0.5],"atCompact":[0.5,0.16]},{"id":"tune","label":"Tune","icon":"ui:sliders-horizontal","meta":"Jan to Jun 2015","at":[0.5,0.5],"atCompact":[0.5,0.5]},{"id":"test","label":"Test","icon":"ui:flag","meta":"Jul to Dec 2015","done":true,"at":[0.83,0.5],"atCompact":[0.5,0.84]}],"edges":[{"from":"train","to":"tune"},{"from":"tune","to":"test"}]}</script></div>
-      </div>
-    </div>
-  </section>
-
   <section class="section" id="stack" aria-labelledby="stack-h">
     <div class="wrap grid grid--top">
       <div class="span-6">
@@ -241,6 +195,26 @@
       </div>
     </div>
   </section>
+  <!-- the portrait: Eva's own photograph goes in this frame (about-portrait.jpg, 1:1) -->
+  <section class="section ground-inverse" id="about" data-moment="line-carries-colour" data-moment-opts='{"from": "base"}' aria-labelledby="about-h">
+    <div class="wrap grid grid--top">
+      <div class="span-6">
+        <div class="section-head">
+          <h2 id="about-h">About Eva Vareille</h2>
+          <p>Data and analytics apprentice with a neuroscience degree. This project is where I practise credit risk modelling.</p>
+        </div>
+        <ul class="rows">
+          <li><span class="rows__name">Now<small>Data and analytics apprentice, Aberdeen Group.</small></span><span class="rows__value">2026</span></li>
+          <li><span class="rows__name">Before<small>Associate scientist in a regulated laboratory.</small></span><span class="rows__value">2025</span></li>
+          <li><span class="rows__name">Studied<small>BSc Neuroscience, University of Edinburgh.</small></span><span class="rows__value">2021</span></li>
+          <li><span class="rows__name">Tools<small>Python, SQL, R, Streamlit, Git and Azure.</small></span></li>
+        </ul>
+      </div>
+      <div class="span-6 start-7">
+        <div class="about__portrait" role="img" aria-label="Portrait of Eva Vareille"><span aria-hidden="true">E</span></div>
+      </div>
+    </div>
+  </section>
 </main>
 
 <footer class="footer closing footer--dark ground-inverse" id="contact" aria-labelledby="close-h">
@@ -258,7 +232,7 @@
           <a class="nav__logo" href="#top">Eva Vareille</a>
           <p class="footer__lede">Credit risk and data projects, from raw data to a decision.</p>
         </div>
-        <div class="span-3 start-7 footer__col"><h3>Project</h3><ul><li><a href="#pipeline">Pipeline</a></li><li><a href="#method">Method</a></li><li><a href="#stack">Stack</a></li></ul></div>
+        <div class="span-3 start-7 footer__col"><h3>Project</h3><ul><li><a href="#pipeline">Pipeline</a></li><li><a href="#stack">Stack</a></li><li><a href="#about">About</a></li></ul></div>
         <div class="span-3 footer__col"><h3>Code</h3><ul><li><a href="https://github.com/EvaVareille/credit-risk-default-prediction">Repository</a></li><li><a href="https://github.com/EvaVareille/credit-risk-default-prediction#readme">README</a></li></ul></div>
       </div>
       <div class="footer__legal">
